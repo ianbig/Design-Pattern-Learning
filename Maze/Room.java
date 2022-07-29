@@ -1,17 +1,24 @@
 package Maze;
 
+import java.util.Random;
+
 public class Room extends MapSite {
   private MapSite sides[];
   private int roomNo;
+  private Random directionGenerator;
 
   public Room(int _roomNo) {
     sides = new MapSite[4];
     roomNo = _roomNo;
+    directionGenerator = new Random();
   }
 
   @Override
-  public void enter() {
-    System.out.println("I am entering a rooms");
+  public MapSite enter() {
+    int direction = directionGenerator.nextInt(3);
+    MapSite site = sides[direction];
+    System.out.println("I am entering a " + site.toString());
+    return site;
   }
 
   public void setSides(int direction, MapSite site) {
@@ -39,5 +46,10 @@ public class Room extends MapSite {
     }
 
     return false;
+  }
+
+  @Override
+  public String toString() {
+    return "Room " + roomNo;
   }
 }

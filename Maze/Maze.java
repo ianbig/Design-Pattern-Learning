@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class Maze {
   ArrayList<Room> rooms;
+  public MapSite curSite;
 
   Maze() {
     rooms = new ArrayList<>();
   }
 
   public void addRoom(Room room) {
+    System.out.println("add Room " + room.getClass().toString() + " in " + getClass().toString());
     rooms.add(room);
   }
 

@@ -1,8 +1,8 @@
 package Maze;
 
 public class Door extends MapSite {
-  private Room leftRoom;
-  private Room rightRoom;
+  protected Room leftRoom; // the room player current in
+  protected Room rightRoom;
   boolean isOpen;
 
   Door(Room _leftRoom, Room _rightRoom) {
@@ -12,15 +12,17 @@ public class Door extends MapSite {
   }
 
   @Override
-  public void enter() {
+  public MapSite enter() {
     if (isOpen) {
       System.out.println("Pass through a door");
-    } else {
-      System.out.println("Bump into a door");
+      return otherSide(leftRoom);
     }
+    
+    System.out.println("Bump into a door");
+    return leftRoom;
   }
 
-  public Room otherSide(Room room) {
+  private Room otherSide(Room room) {
     if (room.equals(leftRoom)) {
       return rightRoom;
     }
@@ -36,5 +38,10 @@ public class Door extends MapSite {
     }
 
     return false;
+  }
+
+  @Override
+  public String toString() {
+    return "A Door with door " + (isOpen ? "open" : "closed");
   }
 }
