@@ -25,4 +25,19 @@ public class Room extends MapSite {
   public int getRoomNo() {
     return roomNo;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj != null && obj.getClass().equals(getClass())) {
+      Room room = (Room)obj;
+      for (int i = 0; i < 4; i++) {
+        if (!room.equals(sides[i])) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    return false;
+  }
 }
