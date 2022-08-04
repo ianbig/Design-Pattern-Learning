@@ -1,0 +1,14 @@
+{
+  "orderId": "1",
+  "items": [
+    {
+      "itemId": 0,
+      "amount": 3
+    },
+    {
+      "itemId": 1,
+      "amount": 2
+    }
+  ],
+  "timeStamp": "2022-07-23"
+}
