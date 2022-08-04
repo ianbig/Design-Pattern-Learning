@@ -1,6 +1,7 @@
 package FastFood;
 
 public class OrderSystem {
+  public void initSystem() {}
   public static void main(String[] args) {
     // intialize menu from menu.json
     // take in json order
