@@ -1,6 +1,7 @@
 package FastFood;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Order {
   private HashMap<Item, Integer> items;
@@ -13,9 +14,11 @@ public class Order {
   @Override
   public String toString() {
     String orderString = "orderId " + orderId;
-    for (Set<Item, Integer> entry : items.entrySet()) {
-
+    for (Map.Entry<Item, Integer> entry : items.entrySet()) {
+      orderString += "item: " + entry.getKey() + "has amount: " + entry.getValue();
     }
+
+    return orderString;
   }
 
   @Override
