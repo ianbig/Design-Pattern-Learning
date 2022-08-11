@@ -11,7 +11,7 @@ public class Item {
 
   @Override
   public String toString() {
-    return "Item " + name + "with price " + price;
+    return "" + name + " with price " + price;
   }
 
   @Override

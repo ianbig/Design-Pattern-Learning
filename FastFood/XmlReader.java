@@ -2,6 +2,7 @@ package FastFood;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.AbstractMap;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -53,42 +54,38 @@ public class XmlReader extends AbstractReader {
 
         for (int i = 0; i < numberOfItems; i++) {
             Node currentItem = itemsList.item(i);
-            if(currentItem.getNodeType() == Node.ELEMENT_NODE) {
-                if (currentItem.getNodeName().equals("item")) {
-                    // HashMap<Item, Integer> tmp =  getItemFromDom(currentItem);
-                    // for (Map.Entry<Item, Integer> entry : tmp.entrySet()) {
-                    //     order.addItem(entry.getKey(), entry.getValue(), 0);
-                    // }
-                }
-
-                System.out.println(currentItem);
+            if (currentItem.getNodeName().equals("item")) {
+                AbstractMap.SimpleEntry<Item, Integer> tmp =  getItemFromDom(currentItem);
+                order.addItem(tmp.getKey(), tmp.getValue(), Order.genorderId++);
             }
         }
 
         return order;
     }
 
-    private HashMap<Item, Integer> getItemFromDom(Node curNode) {
+    private AbstractMap.SimpleEntry<Item, Integer> getItemFromDom(Node curNode) {
         NodeList itemList = curNode.getChildNodes();
         int length = itemList.getLength();
 
-        String item = null;
+        String itemName = null;
         Integer price = 0;
         Integer amount = 0;
         for (int i = 0; i < length; i++) {
             Node currentNode = itemList.item(i);
             if (currentNode.getNodeType() == Node.ELEMENT_NODE) {
+                String value = currentNode.getFirstChild().getNodeValue();
                 if (currentNode.getNodeName().equals("name")) {
-                    System.out.println(currentNode);
+                    itemName = value;
                 } else if (currentNode.getNodeName().equals("price")) {
-                    System.out.println(currentNode.getNodeValue());
+                    price = Integer.parseInt(value);
                 } if (currentNode.getNodeName().equals("amount")) {
-                    System.out.println(currentNode.getNodeValue());
+                    amount = Integer.parseInt(value);
                 }
             }
         }
 
-        HashMap<Item, Integer> retMap = new HashMap<>();
-        return retMap;
+        Item item = new Item(price, itemName);
+        AbstractMap.SimpleEntry<Item, Integer> pair = new AbstractMap.SimpleEntry<>(item, amount);
+        return pair;
     }
 }

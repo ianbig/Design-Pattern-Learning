@@ -5,7 +5,12 @@ import java.util.Map;
 
 public class Order {
   private HashMap<Item, Integer> items;
-  private int orderId;
+  static public int genorderId = 0;
+  private static int orderId;
+
+  public Order() {
+    items = new HashMap<>();
+  }
 
   public void addItem(Item item, Integer amounts, int orderId) {
     items.put(item, amounts);
@@ -15,7 +20,7 @@ public class Order {
   public String toString() {
     String orderString = "orderId " + orderId;
     for (Map.Entry<Item, Integer> entry : items.entrySet()) {
-      orderString += "item: " + entry.getKey() + "has amount: " + entry.getValue();
+      orderString += " item: " + entry.getKey() + " has amount: " + entry.getValue() + "\n";
     }
 
     return orderString;

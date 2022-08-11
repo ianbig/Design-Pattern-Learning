@@ -7,7 +7,7 @@
   </item>
   <item>
     <name>Coke</name>
-    <price>3</price>
     <amount>2</amount>
+    <price>3</price>
   </item>
 </order>
