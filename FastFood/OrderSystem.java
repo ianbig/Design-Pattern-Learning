@@ -17,14 +17,13 @@ public class OrderSystem {
 
   public static void main(String[] args) {
     OrderSystem system = new OrderSystem();
-
-    JsonReader jsonReader = new JsonReader();
-    system.placeOrder(jsonReader, "./customerA.json");
+    String fileRootPath = "/Users/ian.liu/learning/Design-Pattern-Learning/FastFood";
+    // JsonReader jsonReader = new JsonReader();
+    // system.placeOrder(jsonReader, fileRootPath + "/customerA.json");
     
-    // take in xml order
     XmlReader xmlReader = new XmlReader();
-    system.placeOrder(xmlReader, "./customerB.xml");
-    // display all orders
-    system.printOrders();
+    system.placeOrder(xmlReader, fileRootPath + "/customerB.xml");
+    // // display all orders
+    // system.printOrders();
   }
 }

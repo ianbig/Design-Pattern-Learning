@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<order>
+  <item>
+    <name>Burger</name>
+    <price>10</price>
+    <amount>3</amount>
+  </item>
+  <item>
+    <name>Coke</name>
+    <price>3</price>
+    <amount>2</amount>
+  </item>
+</order>
