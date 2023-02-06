@@ -3,14 +3,11 @@
 
 #include <string>
 
-#include "ButtonInterface.hpp"
-#include "Event.hpp"
+#include "ButtonAbstract.hpp"
 
-class ButtonJump : public ButtonInterface {
-  private:
-  std::string name;
+class ButtonJump : public ButtonAbstract {
   public:
-  ButtonJump(std::string _name);
+  ButtonJump(std::string & _name);
   virtual void click() override;
 };
 

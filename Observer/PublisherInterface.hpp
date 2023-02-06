@@ -6,8 +6,8 @@
 class PublisherInterface {
   public:
   virtual void notify() = 0;
-  virtual void addSubscriber(Event & e, Subscriber & s) = 0;
-  virtual void deleteSubscriber(Event &e, Subscriber & s) = 0;
+  virtual void addSubscriber(std::string && e, Subscriber * s) = 0;
+  virtual void deleteSubscriber(Subscriber * s) = 0;
 };
 
 #endif

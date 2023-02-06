@@ -4,10 +4,17 @@
 #include "PublisherInterface.hpp"
 #include "Subscriber.hpp"
 #include <iostream>
-#include <unordered_set>
+#include <unordered_map>
+#include <vector>
+#include <string>
 
 class ButtonventManger : public PublisherInterface {
-  std::unordered_set<Subscriber> subscribers;
+  using SubscriberVector = std::vector<Subscriber*>;
+  std::unordered_map<std::string, SubscriberVector> subscribers;
+  public:
+  virtual void addSubscriber(std::string && e, Subscriber * s) override;
+  virtual void deleteSubscriber(Subscriber * s) override;
+  virtual void notify() override;
 };
 
 #endif

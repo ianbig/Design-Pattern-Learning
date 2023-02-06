@@ -2,12 +2,11 @@
 #define BUTTON_HIT
 
 #include <string>
-#include "ButtonInterface.hpp"
+#include "ButtonAbstract.hpp"
 
-class ButtonHit : public ButtonInterface{
-  std::string name; // TODO: an abstract class Button may be a good idea
+class ButtonHit : public ButtonAbstract {
   public:
-  ButtonHit(std::string name);
+  ButtonHit(std::string _name);
   virtual void click() override;
 };
 
